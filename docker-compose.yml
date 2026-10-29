@@ -1,0 +1,16 @@
+# Local services. Credentials here are for local development only.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: melvis
+      POSTGRES_PASSWORD: melvis_local_only
+      POSTGRES_DB: melvis
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U melvis"]
+      interval: 5s
+      retries: 10
+volumes:
+  pgdata:

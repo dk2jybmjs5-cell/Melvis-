@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: 250 249 252;   /* warm white, cooled slightly */
+  --surface: 255 255 255;
+  --ink: 31 36 64;         /* deep indigo - body text */
+  --muted: 92 98 128;
+  --line: 226 226 238;
+  --sky: 94 128 204;       /* soft blue - primary actions */
+  --lavender: 184 169 227; /* support / highlights */
+  --tide: 47 143 137;      /* teal - success, calm accents */
+  --alert: 176 58 72;
+  color-scheme: light;
+}
+.dark {
+  --canvas: 20 22 38;
+  --surface: 29 32 52;
+  --ink: 232 233 245;
+  --muted: 165 170 200;
+  --line: 52 56 84;
+  --sky: 140 168 232;
+  --lavender: 170 156 220;
+  --tide: 104 196 188;
+  --alert: 236 128 140;
+  color-scheme: dark;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  @apply bg-canvas text-ink font-sans antialiased;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+:focus-visible { outline: 3px solid rgb(var(--sky)); outline-offset: 2px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
